@@ -67,16 +67,28 @@ int main(int argc, char const *argv[])
             std::cout << *it << "\n";
         }
     */
-    int t = 10;
-    std::vector<int> m = {1, 4, 5};
-    std::map<int, std::vector<int> *> mm;
-    auto n = best_sum_rec_memo(t, m, mm);
-    if (n == NULL)
-        return 0;
-    for (auto it = n->begin(); it != n->end(); ++it)
-    {
-        std::cout << *it << "\n";
-    }
 
+    // int t = 10;
+    // std::vector<int> m = {1, 4, 5};
+    // std::map<int, std::vector<int> *> mm;
+    // auto n = best_sum_rec_memo(t, m, mm);
+    // if (n == NULL)
+    //     return 0;
+    // for (auto it = n->begin(); it != n->end(); ++it)
+    // {
+    //     std::cout << *it << "\n";
+    // }
+
+    // // min coins change
+    // std::vector<int> coins = {1, 5, 7};
+
+    // std::cout << "Minimum number: " << za::minCoinChange(coins, 11) << "\n";
+    // // 3
+
+    // coin duplication change
+
+    std::vector<int> coins = {2, 3, 5};
+
+    std::cout << "Ways: " << za::distinctChangeDuplication(coins, 9) << "\n";
     return 0;
 }
