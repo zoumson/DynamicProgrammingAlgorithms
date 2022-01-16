@@ -30,4 +30,6 @@ namespace za
     int distinctChangeNoDuplication(int amount, std::vector<int> &coins);
     int distinctChangeDuplication(std::vector<int> &coins, int amount);
 
+    uint64_t removingDigits(uint64_t inputVal);
+    int reduceZero(int N);
 }

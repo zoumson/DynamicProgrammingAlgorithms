@@ -425,4 +425,72 @@ namespace za
         return all[amount];
     }
 
+    uint64_t removingDigits(uint64_t inputVal)
+    {
+        uint64_t minSteps[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        uint_fast8_t digit0 = 0;
+        for (uint64_t val = 10; val <= inputVal; ++val)
+        {
+            digit0 = val % 10;
+            uint64_t digitVal = val;
+            uint64_t minPrevStep = 0;
+            bool prevStepSet = false;
+            while (digitVal > 0)
+            {
+                uint64_t nextDigitVal = digitVal / 10;
+                uint_fast8_t digit = digitVal - nextDigitVal * 10;
+                if (digit > 0)
+                {
+                    uint64_t prevStep = 0;
+                    if (digit > digit0)
+                    {
+                        prevStep = minSteps[10 + digit0 - digit];
+                    }
+                    else
+                    {
+                        prevStep = minSteps[digit0 - digit];
+                    }
+                    if (!prevStepSet || prevStep < minPrevStep)
+                    {
+                        minPrevStep = prevStep;
+                        prevStepSet = true;
+                    }
+                }
+                digitVal = nextDigitVal;
+            }
+            minSteps[digit0] = minPrevStep + 1;
+        }
+        return minSteps[digit0];
+    }
+
+    // Function to reduce an integer N
+    // to Zero in minimum operations by
+    // removing digits from N
+    int reduceZero(int N)
+    {
+        // Initialise dp[] to steps
+        std::vector<int> dp(N + 1, 1e9);
+
+        dp[0] = 0;
+
+        // Iterate for all elements
+        for (int i = 0; i <= N; i++)
+        {
+
+            // For each digit in number i
+            for (char c : std::to_string(i))
+            {
+
+                // Either select the number
+                // or do not select it
+                dp[i] = std::min(dp[i],
+                                 dp[i - (c - '0')] + 1);
+            }
+        }
+
+        // dp[N] will give minimum
+        // step for N
+        return dp[N];
+    }
+
 }

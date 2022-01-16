@@ -87,8 +87,14 @@ int main(int argc, char const *argv[])
 
     // coin duplication change
 
-    std::vector<int> coins = {2, 3, 5};
+    // std::vector<int> coins = {2, 3, 5};
 
-    std::cout << "Ways: " << za::distinctChangeDuplication(coins, 9) << "\n";
+    // std::cout << "Ways: " << za::distinctChangeDuplication(coins, 9) << "\n";
+
+    // removing digits
+
+    // answer ==> 5 for input 27
+    // std::cout << za::removingDigits(27) << std::endl;
+    std::cout << za::reduceZero(27) << std::endl;
     return 0;
 }
