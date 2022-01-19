@@ -95,6 +95,14 @@ int main(int argc, char const *argv[])
 
     // answer ==> 5 for input 27
     // std::cout << za::removingDigits(27) << std::endl;
-    std::cout << za::reduceZero(27) << std::endl;
+    // std::cout << za::reduceZero(27) << std::endl;
+    // uniquePathsWithObstacles
+    // => 3
+    // std::vector<std::vector<int>> obstacleGrid = {{0, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 1}, {1, 0, 0, 0}};
+
+    // std::cout << za::uniquePathsWithObstacles(obstacleGrid) << std::endl;
+
+    std::vector<std::vector<int>> bookData = {{4, 10}, {4, 8, 5, 3}, {5, 12, 8, 1}};
+    std::cout << za::bookShop(bookData) << std::endl;
     return 0;
 }

@@ -478,19 +478,101 @@ namespace za
         {
 
             // For each digit in number i
-            for (char c : std::to_string(i))
+
+            int number = i; // = some int
+
+            while (number > 0)
             {
 
-                // Either select the number
-                // or do not select it
                 dp[i] = std::min(dp[i],
-                                 dp[i - (c - '0')] + 1);
+                                 dp[i - number % 10] + 1);
+                number = number / 10;
             }
+            // for (char c : std::to_string(i))
+            // {
+
+            //     // Either select the number
+            //     // or do not select it
+            //     dp[i] = std::min(dp[i],
+            //                      dp[i - (c - '0')] + 1);
+            //     std::cout << i - (c - '0') << "\n";
+            // }
+            // std::cout << "Def: " << dp[i] << "\n";
         }
 
         // dp[N] will give minimum
         // step for N
         return dp[N];
+    }
+
+    int uniquePathsWithObstacles(std::vector<std::vector<int>> &obstacleGrid)
+    {
+        if (obstacleGrid[0][0] == 1)
+            return 0;
+        else
+            obstacleGrid[0][0] = 1;
+
+        bool row1_blocked = false;
+        for (int row1 = 1; row1 < obstacleGrid[0].size(); row1++)
+        {
+            if (obstacleGrid[0][row1] == 1)
+            {
+                row1_blocked = true;
+                obstacleGrid[0][row1] = 0;
+            }
+            else if (row1_blocked)
+                obstacleGrid[0][row1] = 0;
+            else
+                obstacleGrid[0][row1] = 1;
+        }
+
+        bool col1_blocked = false;
+        for (int col1 = 1; col1 < obstacleGrid.size(); col1++)
+        {
+            if (obstacleGrid[col1][0] == 1)
+            {
+                col1_blocked = true;
+                obstacleGrid[col1][0] = 0;
+            }
+            else if (col1_blocked)
+                obstacleGrid[col1][0] = 0;
+            else
+                obstacleGrid[col1][0] = 1;
+        }
+
+        for (int i = 1; i < obstacleGrid.size(); i++)
+        {
+            for (int j = 1; j < obstacleGrid[0].size(); j++)
+            {
+                if (obstacleGrid[i][j] == 1)
+                    obstacleGrid[i][j] = 0;
+                else
+                    obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
+            }
+        }
+
+        return obstacleGrid[obstacleGrid.size() - 1][obstacleGrid[0].size() - 1];
+    }
+
+    int bookShop(std::vector<std::vector<int>> input)
+    {
+
+        // n, x
+        // ...... n price
+        // ...... n page
+        std::vector<int> price = input[1];
+        std::vector<int> pages = input[2];
+        std::function<int(int, int)> bookShopHelper;
+        bookShopHelper = [&](int x, int indx)
+        {
+            if (x == 0 || indx == 0)
+                return 0;
+            else
+
+                return (x >= price[indx]) ? std::max(bookShopHelper(x - price[indx], indx - 1) + pages[indx], bookShopHelper(x, indx - 1)) : bookShopHelper(x, indx - 1);
+        };
+
+        return bookShopHelper(input[0][1], input[0][0]);
     }
 
 }

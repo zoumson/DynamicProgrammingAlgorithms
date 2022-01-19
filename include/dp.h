@@ -32,4 +32,6 @@ namespace za
 
     uint64_t removingDigits(uint64_t inputVal);
     int reduceZero(int N);
+    int uniquePathsWithObstacles(std::vector<std::vector<int>> &obstacleGrid);
+    int bookShop(std::vector<std::vector<int>> &input);
 }
