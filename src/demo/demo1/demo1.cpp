@@ -102,7 +102,9 @@ int main(int argc, char const *argv[])
 
     // std::cout << za::uniquePathsWithObstacles(obstacleGrid) << std::endl;
 
-    std::vector<std::vector<int>> bookData = {{4, 10}, {4, 8, 5, 3}, {5, 12, 8, 1}};
-    std::cout << za::bookShop(bookData) << std::endl;
+    // std::vector<std::vector<int>> bookData = {{4, 10}, {4, 8, 5, 3}, {5, 12, 8, 1}};
+    // std::cout << za::bookShop(bookData) << std::endl;
+    std::vector<int> arr = {2, 0, 2};
+    std::cout << "all:" << za::arrayDescription(3, 5, arr) << std::endl;
     return 0;
 }

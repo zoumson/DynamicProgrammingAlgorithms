@@ -34,4 +34,5 @@ namespace za
     int reduceZero(int N);
     int uniquePathsWithObstacles(std::vector<std::vector<int>> &obstacleGrid);
     int bookShop(std::vector<std::vector<int>> &input);
+    int arrayDescription(int n, int m, std::vector<int> el);
 }
